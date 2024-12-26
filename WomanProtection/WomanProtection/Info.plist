@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLName</key>
+            <string>WomanProtection</string>
+        </dict>
+    </array>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Konumunuzu göstermek için izin gerekiyor.</string>
+    <key>NSContactsUsageDescription</key>
+    <string>Uygulama, rehberinizdeki kişileri acil durumlar için kullanır.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>En yakın acil durum merkezlerini gösterebilmek için konum bilginiz kullanılacaktır.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Ses kaydetmek için mikrofon erişimine ihtiyaç var.</string>
+
+</dict>
+</plist>
