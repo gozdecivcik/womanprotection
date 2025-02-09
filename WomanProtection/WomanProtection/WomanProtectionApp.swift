@@ -1,17 +1,18 @@
-//
-//  WomanProtectionApp.swift
-//  WomanProtection
-//
-//  Created by Gözde Civcik on 15.12.2024.
-//
-
 import SwiftUI
 
 @main
 struct WomanProtectionApp: App {
+    @StateObject private var appState = AppState()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if appState.isLoggedIn {
+                HomeView()
+                    .environmentObject(appState)
+            } else {
+                ContentView()
+                    .environmentObject(appState)
+            }
         }
     }
 }

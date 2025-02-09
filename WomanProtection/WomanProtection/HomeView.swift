@@ -2,6 +2,8 @@ import SwiftUI
 import AVFoundation
 
 struct HomeView: View {
+    @EnvironmentObject var appState: AppState // Kullanıcı durumunu yöneten AppState
+
     @State private var isRecording = false
     @State private var audioRecorder: AVAudioRecorder?
     @State private var showEmergencyContacts = false
@@ -138,6 +140,7 @@ struct HomeView: View {
     
     // Çıkış İşlevi
     func logout() {
+        appState.isLoggedIn = false // Kullanıcıyı giriş ekranına yönlendir
         print("Kullanıcı çıkış yaptı.")
     }
     
@@ -238,5 +241,6 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(AppState()) // AppState'in bağlandığından emin olun
     }
 }

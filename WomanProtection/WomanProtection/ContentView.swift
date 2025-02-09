@@ -6,7 +6,8 @@ struct ContentView: View {
     @State private var birthday: Date = Date()
     @State private var bloodType: String = ""
     @State private var address: String = ""
-    @State private var navigateToHome: Bool = false
+    @State private var password: String = ""
+    @State private var navigateToLogin: Bool = false
     
     let bloodTypes = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
     
@@ -27,12 +28,13 @@ struct ContentView: View {
                         .pickerStyle(MenuPickerStyle())
                         
                         TextField("İkametgah Adresi", text: $address)
+                        SecureField("Parola", text: $password) // Parola Alanı
                     }
                 }
                 
                 Button(action: {
                     saveData()
-                    navigateToHome = true
+                    navigateToLogin = true
                 }) {
                     Text("Kaydet ve Devam Et")
                         .frame(maxWidth: .infinity)
@@ -41,10 +43,10 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
-                .disabled(name.isEmpty || surname.isEmpty || bloodType.isEmpty || address.isEmpty)
+                .disabled(name.isEmpty || surname.isEmpty || bloodType.isEmpty || address.isEmpty || password.isEmpty)
                 .padding()
                 
-                NavigationLink("", destination: HomeView(), isActive: $navigateToHome)
+                NavigationLink("", destination: LoginView(), isActive: $navigateToLogin)
                     .hidden()
             }
             .navigationTitle("Kayıt Ol")
@@ -57,12 +59,14 @@ struct ContentView: View {
             "soyad": surname,
             "doğumTarihi": "\(birthday)",
             "kanGrubu": bloodType,
-            "adres": address
+            "adres": address,
+            "parola": password
         ]
         UserDefaults.standard.set(userData, forKey: "kullaniciBilgileri")
         print("Veriler kaydedildi: \(userData)")
     }
 }
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
